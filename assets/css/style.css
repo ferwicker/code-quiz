@@ -124,8 +124,11 @@ button {
     border-bottom-style: dotted;
     border-bottom-color: #555555;
     border-bottom-width:1px;
+}
 
-
+.first-place {
+    color: #3CC5FF;
+    font-size: 22px;
 }
 
 .position {
@@ -152,7 +155,7 @@ button {
     }
 
     .top-yellow {
-        padding: 30px 20px;
+        padding: 30px;
     }
 
     .questions-container {

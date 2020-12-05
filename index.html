@@ -18,7 +18,7 @@
   <body>
 
     <!--Screen 1 - Start-->
-    <div id="start-screen" class="d-none">
+    <div id="start-screen" class="">
         <section class="d-flex justify-content-center align-items-center ">
             <div class="container-fluid">
                 <div class="row home-text">
@@ -27,12 +27,12 @@
                     </div>                
                     <div class="col-md-6">
                         <h1>Coding Quiz Challenge</h1>
-                        <p>Test your skills. Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim 
-                            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
-                            ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate 
-                            velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                        <button>Start</button>
+                        <p>Test your HTML, CSS and Javascript knowledge with this fun quiz game.
+                            Answer as many questions as you can in 60 seconds, your score will be marked by 
+                            correct answers but be careful!
+                            An incorrect answer will take 5 seconds off the clock! Are you ready?
+                        </p>
+                        <button id="start-button">Start</button>
                     </div>
                 </div>
             </div>
@@ -63,13 +63,13 @@
                     <p id="correct-message">Awesome!</p>
                 </div>
                 <!--Quit button-->
-                <button class="quit">Quit</button>
+                <button id="quit-button" class="quit">Quit</button>
 
         </section>
     </div>
 
         <!--Screen 3 - Game Over-->
-    <div id="score-screen" class="d-none">
+    <div id="game-over-screen" class="d-none">
         <section class="d-flex justify-content-center align-items-center">
             <div class="d-flex flex-column align-items-center game-over">
                 <h2>Game over!</h2>
@@ -88,18 +88,52 @@
     </div>
 
     <!--Screen 4 - High Scores-->
-    <div id="score-screen" class="">
+    <div id="score-screen" class="d-none">
         <section class="d-flex justify-content-center align-items-center">
             <div class="d-flex flex-column align-items-center">
                 <div class="high-scores-container d-flex flex-column align-items-center">
                     <h2>High scores</h2>
-                    <div id="leaderboard-entry" class="leaderboard-entry container-fluid d-flex justify-content-between">
+
+                    <div id="leaderboard-entry-1" class="first-place leaderboard-entry container-fluid d-flex justify-content-between">
                         <div>
                             <span id="position" class="position">1</span>
                             <span id="leaderboard-name">Super awesome</span>
                         </div>
                             <span id="leaderboard-score">15</span>
                     </div>
+
+                    <div id="leaderboard-entry-2" class="leaderboard-entry container-fluid d-flex justify-content-between">
+                        <div>
+                            <span id="position" class="position">2</span>
+                            <span id="leaderboard-name"></span>
+                        </div>
+                            <span id="leaderboard-score"></span>
+                    </div>
+
+                    <div id="leaderboard-entry-3" class="leaderboard-entry container-fluid d-flex justify-content-between">
+                        <div>
+                            <span id="position" class="position">3</span>
+                            <span id="leaderboard-name"></span>
+                        </div>
+                            <span id="leaderboard-score"></span>
+                    </div>
+
+                    <div id="leaderboard-entry-4" class="leaderboard-entry container-fluid d-flex justify-content-between">
+                        <div>
+                            <span id="position" class="position">4</span>
+                            <span id="leaderboard-name"></span>
+                        </div>
+                            <span id="leaderboard-score"></span>
+                    </div>
+
+                    <div id="leaderboard-entry-5" class="leaderboard-entry container-fluid d-flex justify-content-between">
+                        <div>
+                            <span id="position" class="position">5</span>
+                            <span id="leaderboard-name"></span>
+                        </div>
+                            <span id="leaderboard-score"></span>
+                    </div>
+
                 </div>
                 <div>
                     <button id="play-again">Play Again</button>
