@@ -1,6 +1,7 @@
 body {
     font-family: montserrat, sans-serif;
     font-size: 18px;
+    text-align: center;
 }
 
 section {
@@ -21,14 +22,17 @@ button {
     border-radius: 30px;
     color: white;
     font-family: roboto, sans-serif;
-    font-weight: 900;
+    font-weight: 700;
     text-transform: uppercase;
     padding: 7px 30px;
     min-width: 170px;
     margin-top: 30px;
 }
 
-
+.bold {
+    font-weight: 600;
+}
+/*screen 1*/
 .start-image {
     width: 100%;
     max-width: 550px;
@@ -72,8 +76,42 @@ button {
     bottom: 50px;
 }
 
+#wrong-message {
+    font-family: roboto, sans-serif;
+    font-weight: 900;
+    color: #FE3A52;
+}
 
+#correct-message {
+    font-family: roboto, sans-serif;
+    font-weight: 900;
+    color: #3CC5FF;
+}
 
+/* Screen 3 */
+.heart-image {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    width: 200px;
+    z-index: -1;
+}
+
+.score-circle {
+    background-color: #FE3A52;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    margin-bottom: 30px;
+    color: white;
+    font-family: roboto, sans-serif;
+    font-weight: 900;
+    font-size: 60px;
+}
+
+.game-over {
+    margin-top: -150px;
+}
 
 /* Media queries
 /* Medium devices (tablets, 768px and up) */
@@ -95,5 +133,13 @@ button {
     .questions-container {
         max-width: 600px;
         padding: 20px;
+    }
+
+    .heart-image {
+        width: 300px;
+    }
+
+    .game-over {
+        margin-top: 0;
     }
 }

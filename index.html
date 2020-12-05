@@ -40,7 +40,7 @@
     </div>
 
         <!--Screen 2 - Questions-->
-    <div id="questions-screen">
+    <div id="questions-screen" class="d-none">
         <section class="d-flex justify-content-center align-items-center">
                 <!--Score and time section-->
                 <div class="top-yellow">
@@ -59,10 +59,31 @@
                 <div class="questions-container">
                     <span id="question-text">1. Question 1</span>
                     <p id="answer-option">Answer 1</p>
+                    <p id="wrong-message">Oops! Wrong answer!</p>
+                    <p id="correct-message">Awesome!</p>
                 </div>
                 <!--Quit button-->
                 <button class="quit">Quit</button>
 
+        </section>
+    </div>
+
+        <!--Screen 3 - Game Over-->
+    <div id="score-screen" class="">
+        <section class="d-flex justify-content-center align-items-center">
+            <div class="d-flex flex-column align-items-center game-over">
+                <h2>Game over!</h2>
+                <p class="bold">Your score:</p>
+                <div class="score-circle d-flex justify-content-center align-items-center">
+                    <span id="score-total">15</span>
+                </div>
+                <form>
+                        <label for="name" class="bold">Enter your name:</label><br>
+                        <input type="text" id="name" name="name"><br>
+                        <button type="submit">Save your score</button>
+                </form>
+            </div>
+            <img src="assets/images/heart.png" class="heart-image"/>
         </section>
     </div>
 
