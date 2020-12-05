@@ -89,7 +89,7 @@ button {
 }
 
 /* Screen 3 */
-.heart-image {
+.small-image {
     position: fixed;
     bottom: 10px;
     left: 10px;
@@ -111,6 +111,31 @@ button {
 
 .game-over {
     margin-top: -150px;
+}
+
+/* Screen 4 */
+.high-scores-container {
+    margin-top: -120px;
+    width: 100%;
+}
+
+.leaderboard-entry {
+    padding: 10px;
+    border-bottom-style: dotted;
+    border-bottom-color: #555555;
+    border-bottom-width:1px;
+
+
+}
+
+.position {
+    font-family: roboto, sans-serif;
+    font-weight: 900;
+    margin-right: 10px;
+}
+
+.button-yellow {
+    background-color: #FFC43B;
 }
 
 /* Media queries
@@ -135,11 +160,20 @@ button {
         padding: 20px;
     }
 
-    .heart-image {
+    .small-image {
         width: 300px;
     }
 
     .game-over {
         margin-top: 0;
+    }
+
+    .high-scores-container {
+        margin-top: 0;
+        width: 400px;
+    }
+
+    .button-yellow {
+        margin-left: 25px;
     }
 }

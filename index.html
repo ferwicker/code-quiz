@@ -69,7 +69,7 @@
     </div>
 
         <!--Screen 3 - Game Over-->
-    <div id="score-screen" class="">
+    <div id="score-screen" class="d-none">
         <section class="d-flex justify-content-center align-items-center">
             <div class="d-flex flex-column align-items-center game-over">
                 <h2>Game over!</h2>
@@ -83,10 +83,32 @@
                         <button type="submit">Save your score</button>
                 </form>
             </div>
-            <img src="assets/images/heart.png" class="heart-image"/>
+            <img src="assets/images/heart.png" class="small-image"/>
         </section>
     </div>
 
+    <!--Screen 4 - High Scores-->
+    <div id="score-screen" class="">
+        <section class="d-flex justify-content-center align-items-center">
+            <div class="d-flex flex-column align-items-center">
+                <div class="high-scores-container d-flex flex-column align-items-center">
+                    <h2>High scores</h2>
+                    <div id="leaderboard-entry" class="leaderboard-entry container-fluid d-flex justify-content-between">
+                        <div>
+                            <span id="position" class="position">1</span>
+                            <span id="leaderboard-name">Super awesome</span>
+                        </div>
+                            <span id="leaderboard-score">15</span>
+                    </div>
+                </div>
+                <div>
+                    <button id="play-again">Play Again</button>
+                    <button id="clear-scores" class="button-yellow">Clear scores</button>
+                </div>
+            </div>
+            <img src="assets/images/lightning.png" class="small-image"/>
+        </section>
+    </div>
 
 <!--jQuery and Bootstrap Bundle (includes Popper) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
