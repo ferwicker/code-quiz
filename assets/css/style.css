@@ -80,6 +80,7 @@ button {
 .quit {
     position: fixed;
     bottom: 50px;
+    background-color: #FE3A52;
 }
 
 #wrong-message {

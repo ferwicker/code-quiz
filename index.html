@@ -55,7 +55,8 @@
                         </div>
                     </div>
                 </div>
-                <!--Questions section-->
+
+                <!--old Questions section
                 <div class="questions-container">
                     <span id="question-number" class="question-text">1.</span><span id="question-text" class="question-text">Question 1</span>
                     <p class="answer-option" id="answer-option-1">Answer 1</p>
@@ -63,7 +64,38 @@
                     <p class="answer-option" id="answer-option-3">Answer 3</p>
                     <p id="wrong-message" class="d-none">Oops! Wrong answer!</p>
                     <p id="correct-message" class="d-none">Awesome!</p>
-                </div>
+                </div>-->
+                <!--New Questions-->
+                <form>
+                    <fieldset class="form-group d-flex flex-column align-items-start text-left">
+
+                          <legend><span id="question-number" class="question-text">1.</span>
+                            <span id="question-text" class="question-text">Question 1</span>
+                          </legend>
+                          <div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio" name="answers" id="answerA" value="a" checked>
+                              <label class="form-check-label" for="answerA">
+                                First answer
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio" name="answers" id="answerB" value="b">
+                              <label class="form-check-label" for="answerB">
+                                Second answer
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio" name="answers" id="answerC" value="c">
+                              <label class="form-check-label" for="answerC">
+                                Third answer
+                              </label>
+                            </div>
+                          </div>
+                      </fieldset>
+                      <button type="submit">Next</button>
+                </form>
+
                 <!--Quit button-->
                 <button id="quit-button" class="quit">Quit</button>
 
@@ -79,7 +111,7 @@
                 <div class="score-circle d-flex justify-content-center align-items-center">
                     <span id="score-total"></span>
                 </div>
-                <form>
+                <form id="score-form">
                         <label for="name" class="bold">Enter your name:</label><br>
                         <input type="text" id="name" name="name"><br>
                         <button type="submit">Save your score</button>

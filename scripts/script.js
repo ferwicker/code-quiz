@@ -12,18 +12,21 @@ var startButton = document.getElementById('start-button');
 //screen 2
 var scoreEl = document.getElementById('score');
 var timeEl = document.getElementById('time-left');
+var score = 0;
 
-var questionNum = document.getElementById('question-number')
-var question = document.getElementById('question-text');
+/*var questionNum = document.getElementById('question-number')
+var questionEl = document.getElementById('question-text');
+var answerOptions = document.getElementsByClassName('answer-option');
 var answer1El = document.getElementById('answer-option-1');
 var answer2El = document.getElementById('answer-option-2');
 var answer3El = document.getElementById('answer-option-3');
-
-var wrongMessage = document.getElementById('wrong-message');
-var correctMessage = document.getElementById('correct-message');
+*/
 
 var quitButton = document.getElementById('quit-button');
 
+//screen 3
+var scoreTotalEl = document.getElementById('score-total');
+var userName = document.getElementById('name');
 
 // basic switching between screens
 function goToScreen1(){
@@ -54,18 +57,16 @@ function goToScreen4(){
     screen4.setAttribute('class', '');
 }
 
-
 // Screen 2
 
 // Create the timer
-
+var secondsLeft = 60;
 var timeInterval;
-
-timeEl.textContent = '60';
+timeEl.textContent = secondsLeft
 
 function gameTimer() {
 
-    var secondsLeft = 59;
+    secondsLeft = 9;
     timeInterval = setInterval(function(){
     timeEl.textContent = secondsLeft
     secondsLeft--;
@@ -79,6 +80,8 @@ function gameTimer() {
 
   };
 
+  scoreEl.textContent = score;
+
 /* display questions
     user clicks answer
     check answer
@@ -86,13 +89,17 @@ function gameTimer() {
     if incorrect
     delay next?
     use radio buttons instead?
-*/
-questionNum.textContent = allQuestions[0]['number'] + '. ';
-question.textContent = allQuestions[0]['question'];
-answer1El.textContent = allQuestions[0]['option-1'];
-answer2El.textContent = allQuestions[0]['option-2'];
-answer3El.textContent = allQuestions[0]['option-3'];
 
+var i = 0;
+function displayQuestion(){
+
+        questionNum.textContent = allQuestions[i]['number'] + '. ';
+        questionEl.textContent = allQuestions[i][question];
+        answer1El.textContent = allQuestions[i]['option-1'];
+        answer2El.textContent = allQuestions[i]['option-2'];
+        answer3El.textContent = allQuestions[i]['option-3'];
+}
+*/
 
 // start game (from screen 1 -> 2)
 
@@ -101,6 +108,7 @@ function startGame(){
     clearInterval(timeInterval);
     goToScreen2();
     gameTimer();
+    //displayQuestion();
 }
 
 //reset game function
@@ -114,12 +122,59 @@ function resetGame (){
 
 }
 
+//screen 3
+let highScores = JSON.parse(localStorage.getItem("high scores") || "[]");
+
+var scoreForm = document.getElementById('score-form');
+var nameInput = document.getElementById('name');
+scoreTotalEl.textContent = score; // works
+
+scoreForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+    var nameText = nameInput.value.trim();
+  
+    var savedScore = {'name':nameText, 'score':score}
+
+    // Add new saved score to scores array
+    highScores.push(savedScore);
+    //sort by highest scores
+    highScores.sort(function(a, b) {
+        return parseFloat(b.score) - parseFloat(a.score);
+    });
+    //save again to local storage
+    localStorage.setItem("high scores", JSON.stringify(highScores));
+
+    nameInput.value = ""; 
+    goToScreen4();
+  });
+
+  //screen 4
+
+  //render high scores
+  
+
+  //buttons
+
+  var playAgainButton = document.getElementById('play-again');
+  var clearScoresButton = document.getElementById('clear-scores');
+
+  function clearScores(){
+    highScores = [];
+    localStorage.setItem("high scores", "");
+  }
+  
+
+//check local storage exercises, set up high scores list
+
 // Button event listeners 
-//screen1
+//screen 1
 startButton.addEventListener('click', startGame);
 //screen 2
 quitButton.addEventListener('click', resetGame);
 
+//screen 4
+playAgainButton.addEventListener('click', resetGame);
+clearScoresButton.addEventListener('click', clearScores);
 
 
 /* PSEUDO CODING
