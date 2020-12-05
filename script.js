@@ -1,3 +1,50 @@
+console.log ('connected');
+
+// main screen elements
+var screen1 = document.getElementById('start-screen');
+var screen2 = document.getElementById('questions-screen');
+var screen3 = document.getElementById('game-over-screen')
+var screen4 = document.getElementById('score-screen');
+
+//screen 1
+var startButton = document.getElementById('start-button');
+
+//screen 2
+var quitButton = document.getElementById('quit-button');
+
+
+// basic switching between screens
+function goToScreen1(){
+    screen1.setAttribute('class', '');
+    screen2.setAttribute('class', 'd-none');
+    screen3.setAttribute('class', 'd-none');
+    screen4.setAttribute('class', 'd-none');
+}
+
+function goToScreen2(){
+    screen1.setAttribute('class', 'd-none');
+    screen2.setAttribute('class', '');
+    screen3.setAttribute('class', 'd-none');
+    screen4.setAttribute('class', 'd-none');
+}
+
+function goToScreen3(){
+    screen1.setAttribute('class', 'd-none');
+    screen2.setAttribute('class', 'd-none');
+    screen3.setAttribute('class', '');
+    screen4.setAttribute('class', 'd-none');
+}
+
+function goToScreen4(){
+    screen1.setAttribute('class', 'd-none');
+    screen2.setAttribute('class', 'd-none');
+    screen3.setAttribute('class', 'd-none');
+    screen4.setAttribute('class', '');
+}
+
+// Screen 1
+startButton.addEventListener("click", goToScreen2);
+
 /* PSEUDO CODING
 when user clicks START button:
 
