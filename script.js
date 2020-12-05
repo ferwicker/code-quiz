@@ -10,6 +10,17 @@ var screen4 = document.getElementById('score-screen');
 var startButton = document.getElementById('start-button');
 
 //screen 2
+var scoreEl = document.getElementById('score');
+var timeEl = document.getElementById('time-left');
+
+var questionEl = document.getElementById('question-text');
+var answer1El = document.getElementById('answer-option-1');
+var answer2El = document.getElementById('answer-option-2');
+var answer3El = document.getElementById('answer-option-3');
+
+var wrongMessage = document.getElementById('wrong-message');
+var correctMessage = document.getElementById('correct-message');
+
 var quitButton = document.getElementById('quit-button');
 
 
@@ -43,7 +54,42 @@ function goToScreen4(){
 }
 
 // Screen 1
-startButton.addEventListener("click", goToScreen2);
+
+function startGame(){
+    timeEl.textContent = '60';
+    clearInterval(timeInterval);
+    goToScreen2();
+    gameTimer();
+}
+
+startButton.addEventListener('click', startGame);
+
+
+
+// Screen 2
+
+// Create the countdown timer.
+var timeInterval;
+
+timeEl.textContent = '60';
+
+function gameTimer() {
+
+    var secondsLeft = 59;
+    timeInterval = setInterval(function(){
+    timeEl.textContent = secondsLeft
+    secondsLeft--;
+  
+      if (secondsLeft === -1) {
+        clearInterval(timeInterval);
+        //save score and go to screen 3.
+        goToScreen3();
+      }
+    }, 1000);
+
+  };
+
+quitButton.addEventListener('click', goToScreen1);
 
 /* PSEUDO CODING
 when user clicks START button:
