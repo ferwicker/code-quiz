@@ -43,7 +43,7 @@ button {
 /*screen 2*/
 .top-yellow {
     width: 100%;
-    padding: 60px 20px 30px 20px;
+    padding: 30px 20px;
     background-color: #FFC43B;
     position: fixed;
     top: 0;
@@ -62,14 +62,19 @@ button {
     text-align: left;
 }
 
-#question-text {
+.question-text {
     font-family: roboto, sans-serif;
     font-weight: 900; 
     font-size: 36px;
 }
 
-#answer-option {
+.answer-option {
     margin: 10px 0 10px 40px;
+    cursor: pointer;
+}
+
+.answer-option:hover {
+    color: #3CC5FF;
 }
 
 .quit {

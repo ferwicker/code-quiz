@@ -13,7 +13,8 @@ var startButton = document.getElementById('start-button');
 var scoreEl = document.getElementById('score');
 var timeEl = document.getElementById('time-left');
 
-var questionEl = document.getElementById('question-text');
+var questionNum = document.getElementById('question-number')
+var question = document.getElementById('question-text');
 var answer1El = document.getElementById('answer-option-1');
 var answer2El = document.getElementById('answer-option-2');
 var answer3El = document.getElementById('answer-option-3');
@@ -53,22 +54,11 @@ function goToScreen4(){
     screen4.setAttribute('class', '');
 }
 
-// Screen 1
-
-function startGame(){
-    timeEl.textContent = '60';
-    clearInterval(timeInterval);
-    goToScreen2();
-    gameTimer();
-}
-
-startButton.addEventListener('click', startGame);
-
-
 
 // Screen 2
 
-// Create the countdown timer.
+// Create the timer
+
 var timeInterval;
 
 timeEl.textContent = '60';
@@ -89,7 +79,48 @@ function gameTimer() {
 
   };
 
-quitButton.addEventListener('click', goToScreen1);
+/* display questions
+    user clicks answer
+    check answer
+    if correct
+    if incorrect
+    delay next?
+    use radio buttons instead?
+*/
+questionNum.textContent = allQuestions[0]['number'] + '. ';
+question.textContent = allQuestions[0]['question'];
+answer1El.textContent = allQuestions[0]['option-1'];
+answer2El.textContent = allQuestions[0]['option-2'];
+answer3El.textContent = allQuestions[0]['option-3'];
+
+
+// start game (from screen 1 -> 2)
+
+function startGame(){
+    timeEl.textContent = '60';
+    clearInterval(timeInterval);
+    goToScreen2();
+    gameTimer();
+}
+
+//reset game function
+
+function resetGame (){
+    timeEl.textContent = '60';
+    scoreEl.textContent = '0';
+    //score = 0
+    clearInterval(timeInterval);
+    goToScreen1();
+
+}
+
+// Button event listeners 
+//screen1
+startButton.addEventListener('click', startGame);
+//screen 2
+quitButton.addEventListener('click', resetGame);
+
+
 
 /* PSEUDO CODING
 when user clicks START button:
