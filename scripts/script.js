@@ -151,8 +151,19 @@ scoreForm.addEventListener("submit", function(event) {
   //screen 4
 
   //render high scores
-  
+  //first place
+  if (highScores){
+    var firstPlace = {
+        'firstPlaceName': (document.getElementById('leaderboard-name1')).textContent = highScores[0]['name'],
+        'score': (document.getElementById('leaderboard-score1')).textContent = highScores[0]['score'],
+    }
 
+    var secondPlace = {
+        'secondPlaceName': (document.getElementById('leaderboard-name2')).textContent = highScores[1]['name'],
+        'score': (document.getElementById('leaderboard-score2')).textContent = highScores[1]['score'],
+        }
+
+}
   //buttons
 
   var playAgainButton = document.getElementById('play-again');
