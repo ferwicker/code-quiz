@@ -60,7 +60,7 @@ var timeInterval;
 timeEl.textContent = secondsLeft
 
 function gameTimer() {
-    secondsLeft = 9;
+    secondsLeft = 59;
     timeInterval = setInterval(function(){
     timeEl.textContent = secondsLeft
     secondsLeft--;
@@ -89,8 +89,6 @@ let q = 0;
 let scoreCounter = 0;
 function scoreIncrease(){
     scoreCounter++;
-    console.log(scoreCounter);
-
     return scoreCounter;
 };
 
@@ -107,12 +105,35 @@ function displayQuestion(){
      
      
 }
+//start
+function getRadioVal(form, name) {
+    var val;
+    // get list of radio buttons with specified name
+    var radios = form.elements[name];
+    
+    // loop through list of radio buttons
+    for (var i=0, len=radios.length; i<len; i++) {
+        if ( radios[i].checked ) { // radio checked?
+            val = radios[i].value; // if so, hold its value in val
+            break; // and break out of for loop
+        }
+    }
+    return val; // return value of checked radio or undefined if none checked
+    }
+
 
 questionFormEl.addEventListener('submit', function(event){
     event.preventDefault();
 
+    // get value of selected 'answer' radio button
+    var val = getRadioVal( document.getElementById('question-form'), 'answers' );
 
-        scoreIncrease();
+        if(val === allQuestions[q]['correctAnswer']){
+            scoreIncrease();
+        } else {
+            secondsLeft = secondsLeft - 5;
+        }
+
         
         q++;
         console.log(q);
@@ -145,6 +166,11 @@ scoreForm.addEventListener("submit", function(event) {
     event.preventDefault();
     var nameText = nameInput.value.trim();
   
+    if(nameText === ''){
+        nameText = 'anonymous';
+    }
+
+
     var savedScore = {'name':nameText, 'score':scoreCounter}
 
     // Add new saved score to scores array
