@@ -6,6 +6,7 @@ body {
 
 section {
     padding: 10px;
+    min-height: 100vh;
 }
 
 h1,h2 {
@@ -57,14 +58,11 @@ button {
     margin-right: 10px;
 }
 
-#questions-screen {
-    padding-top: 120px;
-}
 
 .question-text {
     font-family: roboto, sans-serif;
     font-weight: 900; 
-    font-size: 36px;
+    font-size: 32px;
 }
 
 .answer-option {
@@ -161,7 +159,6 @@ button {
 
     section {
         padding: 30px;
-        min-height: 100vh;
     }
     .start-image {
         position: fixed;
@@ -175,6 +172,10 @@ button {
 
     .top-yellow {
         padding: 30px;
+    }
+
+    .question-text {
+        font-size: 36px;
     }
 
     .small-image {
