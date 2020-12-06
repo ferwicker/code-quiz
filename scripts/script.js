@@ -1,5 +1,3 @@
-console.log ('connected');
-
 // main screen elements
 var screen1 = document.getElementById('start-screen');
 var screen2 = document.getElementById('questions-screen');
@@ -50,11 +48,7 @@ function goToScreen4(){
     screen4.setAttribute('class', '');
 }
 
-
-
-// Screen 2
-
-// Create the timer
+// Create the main timer
 var secondsLeft = 60;
 var timeInterval;
 timeEl.textContent = secondsLeft
@@ -73,9 +67,17 @@ function gameTimer() {
     }, 1000);
   };
 
- 
+ // start game (from screen 1 -> 2)
 
-// Questions section !!
+function startGame(){
+    timeEl.textContent = '60';
+    clearInterval(timeInterval);
+    goToScreen2();
+    gameTimer();
+    displayQuestion();
+}
+
+// Screen 2
 
 //question elements
 var questionFormEl = document.getElementById('question-form');
@@ -88,11 +90,13 @@ var answerCEl = document.getElementById('answerC-text');
 let q = 0;
 let scoreCounter = 0;
 
+//increase score
 function scoreIncrease(){
     scoreCounter++;
     return scoreCounter;
 };
 
+//display questions from object array
 function displayQuestion(){
     if (q < allQuestions.length) {
         questionNumEl.textContent = allQuestions[q]['number'] + '. ';
@@ -129,7 +133,7 @@ function uncheckAll(form, name){
     var radios = form.elements[name];
     for (var i=0, len=radios.length; i<len; i++) {
         if ( radios[i].checked ) { // radio checked?
-            radios[i].checked = false;} 
+            radios[i].checked = false;} //uncheck the radio
         }
     };
 
@@ -163,7 +167,7 @@ function displayWrongMessage() {
     }, 500);
 };
 
-//IMPORTANT!
+//checking answers - IMPORTANT!
 questionFormEl.addEventListener('submit', function(event){
     event.preventDefault();
 
@@ -186,18 +190,7 @@ questionFormEl.addEventListener('submit', function(event){
 
 );
 
-// start game (from screen 1 -> 2)
-
-function startGame(){
-    timeEl.textContent = '60';
-    clearInterval(timeInterval);
-    goToScreen2();
-    gameTimer();
-    displayQuestion();
-}
-
-
-//screen 3
+// Screen 3
 let highScores = JSON.parse(localStorage.getItem("high scores") || "[]");
 
 var scoreForm = document.getElementById('score-form');
@@ -249,7 +242,6 @@ scoreForm.addEventListener("submit", function(event) {
     ];
 
 
-    // second attempt
     var index = 0;
 
     function renderHighScores(){
@@ -266,17 +258,15 @@ scoreForm.addEventListener("submit", function(event) {
         }
     }
 
-    function clearScoreScreen(){ //make into loop
-
+    function clearScoreScreen(){ 
             scoreBoardName[0].textContent = ''; scoreBoardScore[0].textContent = '';
             scoreBoardName[1].textContent = ''; scoreBoardScore[1].textContent = '';
             scoreBoardName[2].textContent = ''; scoreBoardScore[2].textContent = '';
             scoreBoardName[3].textContent = ''; scoreBoardScore[3].textContent = '';
             scoreBoardName[4].textContent = ''; scoreBoardScore[4].textContent = '';
-
     }
 
-  //buttons
+  //scree 4 buttons
 
   var playAgainButton = document.getElementById('play-again');
   var clearScoresButton = document.getElementById('clear-scores');
@@ -286,9 +276,6 @@ scoreForm.addEventListener("submit", function(event) {
     localStorage.setItem("high scores", JSON.stringify(highScores));
     clearScoreScreen();
   }
-  
-
-//check local storage exercises, set up high scores list
 
 // Button event listeners 
 //screen 1
@@ -299,59 +286,3 @@ quitButton.addEventListener('click', function(){location.reload(); return false;
 //screen 4
 playAgainButton.addEventListener('click', function(){location.reload(); return false;});
 clearScoresButton.addEventListener('click', clearScores);
-
-
-/* PSEUDO CODING
-when user clicks START button:
-
-    hide screen 1
-    show screen 2
-
-    set timer - 60 seconds
-    start timer interval
-
-    display questions with a for loop
-        display question 1
-        display possible answers
-        user clicks an answer
-        if answer matches - score + 1(save, display), display 'correct' message
-        else - time minus 5, display 'wrong' message
-        
-        repeat for rest of questions 
-        (questions are objects in an array with three properties: 
-            question, possible answers (another array?) and correct answer.)
-    if answered all questions - stop timer, go to screen 3
-    if timer runs out - stop all, hide screen 2, go to screen 3
-
-    if user clicks QUIT button, stop all and go to screen 1
-
-    screen 3-
-    display final score
-    user enters name, submits(save to leaderboard with score -how?)
-    when user submits name, hide screen 3, go to screen 4
-
-    screen 4-
-   ok display all high scores
-   ok if user clicks play again, reset questions, timer, score, hide screen 4, show screen 1
-   ok if user clicks clear scores, clear all scores from memory (how)
-
-    -- functions:
-  ok  go to screen 1
-  ok  go to screen 2
-   ok go to screen 3
-   ok go to screen 4
-
-   ok timer interval start timer, display time
-
-    separate variables by screen
-
-   ok do questions array
-
-    questions function with for loop - no?
-
-   ok form function, on submit, match name with score
-
-  ok  screen 4 - organise the scores by highest, display (how to delete lower ones?)
-  ok  clearing scores from memory
-  ok  resetting everything to go to screen 1
-*/
