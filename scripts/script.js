@@ -10,23 +10,16 @@ var screen4 = document.getElementById('score-screen');
 var startButton = document.getElementById('start-button');
 
 //screen 2
-var scoreEl = document.getElementById('score');
+var scoreEl = document.getElementById('score-counter');
 var timeEl = document.getElementById('time-left');
-var score = 4;
-
-/*var questionNum = document.getElementById('question-number')
-var questionEl = document.getElementById('question-text');
-var answerOptions = document.getElementsByClassName('answer-option');
-var answer1El = document.getElementById('answer-option-1');
-var answer2El = document.getElementById('answer-option-2');
-var answer3El = document.getElementById('answer-option-3');
-*/
 
 var quitButton = document.getElementById('quit-button');
 
 //screen 3
 var scoreTotalEl = document.getElementById('score-total');
 var userName = document.getElementById('name');
+
+
 
 // basic switching between screens
 function goToScreen1(){
@@ -57,6 +50,8 @@ function goToScreen4(){
     screen4.setAttribute('class', '');
 }
 
+
+
 // Screen 2
 
 // Create the timer
@@ -65,7 +60,6 @@ var timeInterval;
 timeEl.textContent = secondsLeft
 
 function gameTimer() {
-
     secondsLeft = 9;
     timeInterval = setInterval(function(){
     timeEl.textContent = secondsLeft
@@ -73,33 +67,60 @@ function gameTimer() {
   
       if (secondsLeft === -1) {
         clearInterval(timeInterval);
-        //save score and go to screen 3.
         goToScreen3();
+        scoreTotalEl.textContent = scoreCounter; 
       }
     }, 1000);
-
   };
 
-  scoreEl.textContent = score;
+ 
 
-/* display questions
-    user clicks answer
-    check answer
-    if correct
-    if incorrect
-    delay next?
-    use radio buttons instead?
+// Questions section !!
 
-var i = 0;
+//question elements
+var questionFormEl = document.getElementById('question-form');
+var questionNumEl = document.getElementById('question-number');
+var questionTextEl = document.getElementById('question-text');
+var answerAEl = document.getElementById('answerA-text');
+var answerBEl = document.getElementById('answerB-text');
+var answerCEl = document.getElementById('answerC-text');
+
+let q = 0;
+let scoreCounter = 0;
+function scoreIncrease(){
+    scoreCounter++;
+    console.log(scoreCounter);
+
+    return scoreCounter;
+};
+
 function displayQuestion(){
+    if (q < allQuestions.length) {
+        questionNumEl.textContent = allQuestions[q]['number'] + '. ';
+        questionTextEl.textContent = allQuestions[q]['question'];
+        answerAEl.textContent = allQuestions[q]['answers']['a'];
+        answerBEl.textContent = allQuestions[q]['answers']['b'];
+        answerCEl.textContent = allQuestions[q]['answers']['c'];
+        console.log(allQuestions[q]['correctAnswer']);
 
-        questionNum.textContent = allQuestions[i]['number'] + '. ';
-        questionEl.textContent = allQuestions[i][question];
-        answer1El.textContent = allQuestions[i]['option-1'];
-        answer2El.textContent = allQuestions[i]['option-2'];
-        answer3El.textContent = allQuestions[i]['option-3'];
+    }
+     
+     
 }
-*/
+
+questionFormEl.addEventListener('submit', function(event){
+    event.preventDefault();
+        scoreIncrease();
+
+        scoreEl.textContent = scoreCounter;
+        q++;
+        console.log(q);
+
+    //displayQuestion();
+
+}
+
+);
 
 // start game (from screen 1 -> 2)
 
@@ -108,32 +129,22 @@ function startGame(){
     clearInterval(timeInterval);
     goToScreen2();
     gameTimer();
-    //displayQuestion();
+    displayQuestion();
 }
 
-//reset game function
-
-function resetGame (){
-    timeEl.textContent = '60';
-    scoreEl.textContent = '0';
-    score = 0;
-    clearInterval(timeInterval);
-    goToScreen1();
-
-}
 
 //screen 3
 let highScores = JSON.parse(localStorage.getItem("high scores") || "[]");
 
 var scoreForm = document.getElementById('score-form');
 var nameInput = document.getElementById('name');
-scoreTotalEl.textContent = score; // works
+
 
 scoreForm.addEventListener("submit", function(event) {
     event.preventDefault();
     var nameText = nameInput.value.trim();
   
-    var savedScore = {'name':nameText, 'score':score}
+    var savedScore = {'name':nameText, 'score':scoreCounter}
 
     // Add new saved score to scores array
     highScores.push(savedScore);
@@ -152,19 +163,7 @@ scoreForm.addEventListener("submit", function(event) {
   //screen 4
 
   //render high scores
-  /*first attempt
-  if (highScores){
-    var firstPlace = {
-        'firstPlaceName': (document.getElementById('leaderboard-name1')).textContent = highScores[0]['name'],
-        'score': (document.getElementById('leaderboard-score1')).textContent = highScores[0]['score'],
-    }
 
-    var secondPlace = {
-        'secondPlaceName': (document.getElementById('leaderboard-name2')).textContent = highScores[1]['name'],
-        'score': (document.getElementById('leaderboard-score2')).textContent = highScores[1]['score'],
-        }
-
-} */
     var scoreBoardName = [
         firstPlaceNameEl = document.getElementById('leaderboard-name1'), 
         secondPlaceNameEl = document.getElementById('leaderboard-name2'),
@@ -199,13 +198,13 @@ scoreForm.addEventListener("submit", function(event) {
         }
     }
 
-    function clearScoreScreen(){
+    function clearScoreScreen(){ //make into loop
 
             scoreBoardName[0].textContent = ''; scoreBoardScore[0].textContent = '';
             scoreBoardName[1].textContent = ''; scoreBoardScore[1].textContent = '';
             scoreBoardName[2].textContent = ''; scoreBoardScore[2].textContent = '';
             scoreBoardName[3].textContent = ''; scoreBoardScore[3].textContent = '';
-            scoreBoardName[4].textContent = ''; scoreBoardScore[0].textContent = '';
+            scoreBoardName[4].textContent = ''; scoreBoardScore[4].textContent = '';
 
     }
 
@@ -227,7 +226,7 @@ scoreForm.addEventListener("submit", function(event) {
 //screen 1
 startButton.addEventListener('click', startGame);
 //screen 2
-quitButton.addEventListener('click', resetGame);
+quitButton.addEventListener('click', function(){location.reload(); return false;});
 
 //screen 4
 playAgainButton.addEventListener('click', function(){location.reload(); return false;});

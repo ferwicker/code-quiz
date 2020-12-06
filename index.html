@@ -47,7 +47,7 @@
                     <div class="stats-wrapper d-flex justify-content-between">
                         <div id="score-keeper">
                             <span class="stat-name">Score </span>
-                            <span id="score">0</span>
+                            <span id="score-counter"></span>
                         </div>
                         <div id="time-keeper">
                             <span class="stat-name">Time left </span>
@@ -66,7 +66,7 @@
                     <p id="correct-message" class="d-none">Awesome!</p>
                 </div>-->
                 <!--New Questions-->
-                <form>
+                <form method="POST" id="question-form">
                     <fieldset class="form-group d-flex flex-column align-items-start text-left">
 
                           <legend><span id="question-number" class="question-text">1.</span>
@@ -75,19 +75,19 @@
                           <div>
                             <div class="form-check">
                               <input class="form-check-input" type="radio" name="answers" id="answerA" value="a">
-                              <label class="form-check-label" for="answerA">
+                              <label class="form-check-label" for="answerA" id="answerA-text">
                                 First answer
                               </label>
                             </div>
                             <div class="form-check">
                               <input class="form-check-input" type="radio" name="answers" id="answerB" value="b">
-                              <label class="form-check-label" for="answerB">
+                              <label class="form-check-label" for="answerB" id="answerB-text">
                                 Second answer
                               </label>
                             </div>
                             <div class="form-check">
                               <input class="form-check-input" type="radio" name="answers" id="answerC" value="c">
-                              <label class="form-check-label" for="answerC">
+                              <label class="form-check-label" for="answerC" id="answerC-text">
                                 Third answer
                               </label>
                             </div>
