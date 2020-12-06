@@ -12,7 +12,7 @@ var startButton = document.getElementById('start-button');
 //screen 2
 var scoreEl = document.getElementById('score');
 var timeEl = document.getElementById('time-left');
-var score = 0;
+var score = 4;
 
 /*var questionNum = document.getElementById('question-number')
 var questionEl = document.getElementById('question-text');
@@ -116,7 +116,7 @@ function startGame(){
 function resetGame (){
     timeEl.textContent = '60';
     scoreEl.textContent = '0';
-    //score = 0
+    score = 0;
     clearInterval(timeInterval);
     goToScreen1();
 
@@ -146,12 +146,13 @@ scoreForm.addEventListener("submit", function(event) {
 
     nameInput.value = ""; 
     goToScreen4();
+    renderHighScores();
   });
 
   //screen 4
 
   //render high scores
-  //first place
+  /*first attempt
   if (highScores){
     var firstPlace = {
         'firstPlaceName': (document.getElementById('leaderboard-name1')).textContent = highScores[0]['name'],
@@ -163,7 +164,51 @@ scoreForm.addEventListener("submit", function(event) {
         'score': (document.getElementById('leaderboard-score2')).textContent = highScores[1]['score'],
         }
 
-}
+} */
+    var scoreBoardName = [
+        firstPlaceNameEl = document.getElementById('leaderboard-name1'), 
+        secondPlaceNameEl = document.getElementById('leaderboard-name2'),
+        thirdPlaceNameEl = document.getElementById('leaderboard-name3'), 
+        fourthPlaceNameEl = document.getElementById('leaderboard-name4'),
+        fifthPlaceNameEl = document.getElementById('leaderboard-name5'),
+    ];
+
+    var scoreBoardScore = [
+        firstPlaceScoreEl = document.getElementById('leaderboard-score1'), 
+        secondPlaceScoreEl = document.getElementById('leaderboard-score2'),
+        thirdPlaceScoreEl = document.getElementById('leaderboard-score3'), 
+        fourthPlaceScoreEl = document.getElementById('leaderboard-score4'),
+        fifthPlaceScoreEl = document.getElementById('leaderboard-score5'),
+    ];
+
+
+    // second attempt
+    var index = 0;
+
+    function renderHighScores(){
+        highScores = JSON.parse(localStorage.getItem("high scores") || "[]");
+
+        while (index < scoreBoardName.length) {
+            if(highScores[index]){
+            scoreBoardName[index].textContent = highScores[index]['name'];
+            scoreBoardScore[index].textContent = highScores[index]['score'];
+            index = index + 1;
+            } else {
+                return;
+            }
+        }
+    }
+
+    function clearScoreScreen(){
+
+            scoreBoardName[0].textContent = ''; scoreBoardScore[0].textContent = '';
+            scoreBoardName[1].textContent = ''; scoreBoardScore[1].textContent = '';
+            scoreBoardName[2].textContent = ''; scoreBoardScore[2].textContent = '';
+            scoreBoardName[3].textContent = ''; scoreBoardScore[3].textContent = '';
+            scoreBoardName[4].textContent = ''; scoreBoardScore[0].textContent = '';
+
+    }
+
   //buttons
 
   var playAgainButton = document.getElementById('play-again');
@@ -171,7 +216,8 @@ scoreForm.addEventListener("submit", function(event) {
 
   function clearScores(){
     highScores = [];
-    localStorage.setItem("high scores", "");
+    localStorage.setItem("high scores", JSON.stringify(highScores));
+    clearScoreScreen();
   }
   
 
@@ -184,7 +230,7 @@ startButton.addEventListener('click', startGame);
 quitButton.addEventListener('click', resetGame);
 
 //screen 4
-playAgainButton.addEventListener('click', resetGame);
+playAgainButton.addEventListener('click', function(){location.reload(); return false;});
 clearScoresButton.addEventListener('click', clearScores);
 
 
@@ -218,27 +264,27 @@ when user clicks START button:
     when user submits name, hide screen 3, go to screen 4
 
     screen 4-
-    display all high scores
-    if user clicks play again, reset questions, timer, score, hide screen 4, show screen 1
-    if user clicks clear scores, clear all scores from memory (how)
+   ok display all high scores
+   ok if user clicks play again, reset questions, timer, score, hide screen 4, show screen 1
+   ok if user clicks clear scores, clear all scores from memory (how)
 
     -- functions:
-    go to screen 1
-    go to screen 2
-    go to screen 3
-    go to screen 4
+  ok  go to screen 1
+  ok  go to screen 2
+   ok go to screen 3
+   ok go to screen 4
 
-    timer interval start timer, display time
+   ok timer interval start timer, display time
 
     separate variables by screen
 
-    do questions array
+   ok do questions array
 
-    questions function with for loop
+    questions function with for loop - no?
 
-    form function, on submit, match name with score
+   ok form function, on submit, match name with score
 
-    screen 4 - organise the scores by highest, display (how to delete lower ones?)
-    clearing scores from memory
-    resetting everything to go to screen 1
+  ok  screen 4 - organise the scores by highest, display (how to delete lower ones?)
+  ok  clearing scores from memory
+  ok  resetting everything to go to screen 1
 */
