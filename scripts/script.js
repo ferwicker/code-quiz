@@ -65,7 +65,7 @@ function gameTimer() {
     timeEl.textContent = secondsLeft
     secondsLeft--;
   
-      if (secondsLeft === -1) {
+      if (secondsLeft < 0) {
         clearInterval(timeInterval);
         goToScreen3();
         scoreTotalEl.textContent = scoreCounter; 
@@ -87,6 +87,7 @@ var answerCEl = document.getElementById('answerC-text');
 
 let q = 0;
 let scoreCounter = 0;
+
 function scoreIncrease(){
     scoreCounter++;
     return scoreCounter;
@@ -99,13 +100,14 @@ function displayQuestion(){
         answerAEl.textContent = allQuestions[q]['answers']['a'];
         answerBEl.textContent = allQuestions[q]['answers']['b'];
         answerCEl.textContent = allQuestions[q]['answers']['c'];
-        console.log(allQuestions[q]['correctAnswer']);
-
-    }
-     
-     
+    } else {
+        clearInterval(timeInterval);
+        goToScreen3();
+        scoreTotalEl.textContent = scoreCounter;
+    }    
 }
-//start
+
+//get radio values
 function getRadioVal(form, name) {
     var val;
     // get list of radio buttons with specified name
@@ -121,25 +123,65 @@ function getRadioVal(form, name) {
     return val; // return value of checked radio or undefined if none checked
     }
 
+//uncheck radios
+function uncheckAll(form, name){
 
+    var radios = form.elements[name];
+    for (var i=0, len=radios.length; i<len; i++) {
+        if ( radios[i].checked ) { // radio checked?
+            radios[i].checked = false;} 
+        }
+    };
+
+//display correct message
+var correctMessage = document.getElementById('correct-message');
+
+function displayCorrectMessage() {
+    var messageSecondsLeft = 1;
+    correctMessage.setAttribute('class', '')
+    var messageInterval = setInterval(function(){
+    messageSecondsLeft--;
+      if (messageSecondsLeft < 0) {
+        clearInterval(messageInterval);
+        correctMessage.setAttribute('class', 'd-none')
+        }
+    }, 500);
+};
+
+//display Wrong message
+var wrongMessage = document.getElementById('wrong-message');
+
+function displayWrongMessage() {
+    var messageSecondsLeft = 1;
+    wrongMessage.setAttribute('class', '')
+    var messageInterval = setInterval(function(){
+    messageSecondsLeft--;
+      if (messageSecondsLeft < 0) {
+        clearInterval(messageInterval);
+        wrongMessage.setAttribute('class', 'd-none')
+        }
+    }, 500);
+};
+
+//IMPORTANT!
 questionFormEl.addEventListener('submit', function(event){
     event.preventDefault();
 
     // get value of selected 'answer' radio button
     var val = getRadioVal( document.getElementById('question-form'), 'answers' );
-
+        //check answer is correct
         if(val === allQuestions[q]['correctAnswer']){
             scoreIncrease();
+            displayCorrectMessage()
         } else {
             secondsLeft = secondsLeft - 5;
+            displayWrongMessage()
         }
-
-        
+     
         q++;
-        console.log(q);
         scoreEl.textContent = scoreCounter;
+        uncheckAll(document.getElementById('question-form'), 'answers');
         displayQuestion();
-
 }
 
 );
@@ -165,11 +207,10 @@ var nameInput = document.getElementById('name');
 scoreForm.addEventListener("submit", function(event) {
     event.preventDefault();
     var nameText = nameInput.value.trim();
-  
+    //add default name 
     if(nameText === ''){
         nameText = 'anonymous';
     }
-
 
     var savedScore = {'name':nameText, 'score':scoreCounter}
 

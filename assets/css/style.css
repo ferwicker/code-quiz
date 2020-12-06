@@ -58,10 +58,6 @@ button {
     margin-right: 10px;
 }
 
-.questions-container{
-    text-align: left;
-}
-
 .question-text {
     font-family: roboto, sans-serif;
     font-weight: 900; 
@@ -85,13 +81,21 @@ button {
 
 #wrong-message {
     font-family: roboto, sans-serif;
-    font-weight: 900;
+    font-weight: 700;
+    font-size: 24px;
+    text-align: center;
+    position: fixed;
+    top: 85px;
     color: #FE3A52;
 }
 
 #correct-message {
     font-family: roboto, sans-serif;
-    font-weight: 900;
+    font-weight: 700;
+    font-size: 24px;
+    text-align: center;
+    position: fixed;
+    top: 85px;
     color: #3CC5FF;
 }
 
@@ -151,6 +155,10 @@ button {
 /* Media queries
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 992px) { 
+
+    section {
+        padding: 30px;
+    }
     .start-image {
         position: fixed;
         bottom: 0;
@@ -163,11 +171,6 @@ button {
 
     .top-yellow {
         padding: 30px;
-    }
-
-    .questions-container {
-        max-width: 600px;
-        padding: 20px;
     }
 
     .small-image {
@@ -185,5 +188,13 @@ button {
 
     .button-yellow {
         margin-left: 25px;
+    }
+
+    #wrong-message {
+        font-size: 36px;
+    }
+    
+    #correct-message {
+        font-size: 36px;
     }
 }
