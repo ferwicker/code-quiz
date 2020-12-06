@@ -6,7 +6,6 @@ body {
 
 section {
     padding: 10px;
-    min-height: 100vh;
 }
 
 h1,h2 {
@@ -58,6 +57,10 @@ button {
     margin-right: 10px;
 }
 
+#questions-screen {
+    padding-top: 120px;
+}
+
 .question-text {
     font-family: roboto, sans-serif;
     font-weight: 900; 
@@ -75,7 +78,7 @@ button {
 
 .quit {
     position: fixed;
-    bottom: 50px;
+    bottom: 20px;
     background-color: #FE3A52;
 }
 
@@ -158,6 +161,7 @@ button {
 
     section {
         padding: 30px;
+        min-height: 100vh;
     }
     .start-image {
         position: fixed;
