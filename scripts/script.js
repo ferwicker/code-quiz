@@ -110,13 +110,14 @@ function displayQuestion(){
 
 questionFormEl.addEventListener('submit', function(event){
     event.preventDefault();
-        scoreIncrease();
 
-        scoreEl.textContent = scoreCounter;
+
+        scoreIncrease();
+        
         q++;
         console.log(q);
-
-    //displayQuestion();
+        scoreEl.textContent = scoreCounter;
+        displayQuestion();
 
 }
 
