@@ -51,7 +51,7 @@ function goToScreen4(){
 // Create the main timer
 var secondsLeft = 60;
 var timeInterval;
-timeEl.textContent = secondsLeft
+//timeEl.textContent = secondsLeft //this is twice, which one is correct?
 
 function gameTimer() {
     secondsLeft = 59;
@@ -80,15 +80,14 @@ function startGame(){
 // Screen 2
 
 //question elements
-var questionFormEl = document.getElementById('question-form');
+
 var questionNumEl = document.getElementById('question-number');
 var questionTextEl = document.getElementById('question-text');
-var answerAEl = document.getElementById('answerA-text');
-var answerBEl = document.getElementById('answerB-text');
-var answerCEl = document.getElementById('answerC-text');
+var answersCont = document.querySelector('#answers-container');
 
 let q = 0;
 let scoreCounter = 0;
+scoreEl.textContent = scoreCounter;
 
 //increase score
 function scoreIncrease(){
@@ -96,102 +95,72 @@ function scoreIncrease(){
     return scoreCounter;
 };
 
-//display questions from object array
+//display questions from object array // create and append elements for questions, do a loop inside?
+
 function displayQuestion(){
+    answersCont.textContent = '';
     if (q < allQuestions.length) {
         questionNumEl.textContent = allQuestions[q]['number'] + '. ';
         questionTextEl.textContent = allQuestions[q]['question'];
-        answerAEl.textContent = allQuestions[q]['answers']['a'];
-        answerBEl.textContent = allQuestions[q]['answers']['b'];
-        answerCEl.textContent = allQuestions[q]['answers']['c'];
+
+        for(var i = 0; i < allQuestions[q]['answers'].length; i++){
+        var answerOp = document.createElement('div');
+        answerOp.setAttribute('class', 'answer-option');
+        answerOp.setAttribute('data-value', [i]);
+        answerOp.textContent = allQuestions[q]['answers'][i];
+        answersCont.appendChild(answerOp);
+        };
+
+
     } else {
         clearInterval(timeInterval);
         goToScreen3();
         scoreTotalEl.textContent = scoreCounter;
     }    
-}
-
-//get radio values
-function getRadioVal(form, name) {
-    var val;
-    // get list of radio buttons with specified name
-    var radios = form.elements[name];
-    
-    // loop through list of radio buttons
-    for (var i=0, len=radios.length; i<len; i++) {
-        if ( radios[i].checked ) { // radio checked?
-            val = radios[i].value; // if so, hold its value in val
-            break; // and break out of for loop
-        }
-    }
-    return val; // return value of checked radio or undefined if none checked
-    }
-
-//uncheck radios
-function uncheckAll(form, name){
-
-    var radios = form.elements[name];
-    for (var i=0, len=radios.length; i<len; i++) {
-        if ( radios[i].checked ) { // radio checked?
-            radios[i].checked = false;} //uncheck the radio
-        }
-    };
-
-//display correct message
-var correctMessage = document.getElementById('correct-message');
-
-function displayCorrectMessage() {
-    var messageSecondsLeft = 1;
-    correctMessage.setAttribute('class', '')
-    var messageInterval = setInterval(function(){
-    messageSecondsLeft--;
-      if (messageSecondsLeft < 0) {
-        clearInterval(messageInterval);
-        correctMessage.setAttribute('class', 'd-none')
-        }
-    }, 500);
 };
 
-//display Wrong message
-var wrongMessage = document.getElementById('wrong-message');
 
-function displayWrongMessage() {
+//display correct/incorrect answer messages
+var correctMessage = document.querySelector('#correct-message');
+var wrongMessage = document.querySelector('#wrong-message');
+
+function displayMessage(message) {
     var messageSecondsLeft = 1;
-    wrongMessage.setAttribute('class', '')
+    message.setAttribute('class', '')
     var messageInterval = setInterval(function(){
     messageSecondsLeft--;
       if (messageSecondsLeft < 0) {
         clearInterval(messageInterval);
-        wrongMessage.setAttribute('class', 'd-none')
+        message.setAttribute('class', 'd-none')
         }
     }, 500);
 };
 
 //checking answers - IMPORTANT!
-questionFormEl.addEventListener('submit', function(event){
-    event.preventDefault();
+// add the event listener to the answers container, use event target and value
 
-    // get value of selected 'answer' radio button
-    var val = getRadioVal( document.getElementById('question-form'), 'answers' );
+answersCont.addEventListener('click', function(event){
+
+    // get value of selected 'answer' 
+    var selected = event.target;
+    var val = parseInt(selected.getAttribute('data-value'));
         //check answer is correct
         if(val === allQuestions[q]['correctAnswer']){
             scoreIncrease();
-            displayCorrectMessage()
+            displayMessage(correctMessage);
         } else {
             secondsLeft = secondsLeft - 5;
-            displayWrongMessage()
-        }
-     
+            displayMessage(wrongMessage)
+        };    
         q++;
         scoreEl.textContent = scoreCounter;
-        uncheckAll(document.getElementById('question-form'), 'answers');
         displayQuestion();
 }
 
 );
 
 // Screen 3
-let highScores = JSON.parse(localStorage.getItem("high scores") || "[]");
+let highScores = JSON.parse(localStorage.getItem("high scores") || "[]"); //are the brackets needed?
 
 var scoreForm = document.getElementById('score-form');
 var nameInput = document.getElementById('name');
@@ -216,14 +185,14 @@ scoreForm.addEventListener("submit", function(event) {
     //save again to local storage
     localStorage.setItem("high scores", JSON.stringify(highScores));
 
-    nameInput.value = ""; 
+    nameInput.value = ""; // this is not needed if page is refreshing
     goToScreen4();
     renderHighScores();
   });
 
   //screen 4
 
-  //render high scores
+  //render high scores --how to make this into a loop instead?
 
     var scoreBoardName = [
         firstPlaceNameEl = document.getElementById('leaderboard-name1'), 
@@ -251,14 +220,14 @@ scoreForm.addEventListener("submit", function(event) {
             if(highScores[index]){
             scoreBoardName[index].textContent = highScores[index]['name'];
             scoreBoardScore[index].textContent = highScores[index]['score'];
-            index = index + 1;
+            index++;
             } else {
                 return;
             }
         }
     }
 
-    function clearScoreScreen(){ 
+    function clearScoreScreen(){ //why doesnt this work as a loop?
             scoreBoardName[0].textContent = ''; scoreBoardScore[0].textContent = '';
             scoreBoardName[1].textContent = ''; scoreBoardScore[1].textContent = '';
             scoreBoardName[2].textContent = ''; scoreBoardScore[2].textContent = '';
@@ -266,7 +235,7 @@ scoreForm.addEventListener("submit", function(event) {
             scoreBoardName[4].textContent = ''; scoreBoardScore[4].textContent = '';
     }
 
-  //scree 4 buttons
+  //screen 4 buttons
 
   var playAgainButton = document.getElementById('play-again');
   var clearScoresButton = document.getElementById('clear-scores');

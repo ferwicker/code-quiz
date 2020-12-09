@@ -57,35 +57,13 @@
                 </div>
 
                 <!--Questions-->
-                <form method="POST" id="question-form">
-                    <fieldset class="form-group d-flex flex-column align-items-start text-left">
-
-                          <legend><span id="question-number" class="question-text">1.</span>
+                    <div class="d-flex flex-column align-items-start text-left">
+                          <div><span id="question-number" class="question-text">1.</span>
                             <span id="question-text" class="question-text">Question 1</span>
-                          </legend>
-                          <div>
-                            <div class="form-check">
-                              <input class="form-check-input" type="radio" name="answers" id="answerA" value="a">
-                              <label class="form-check-label" for="answerA" id="answerA-text">
-                                First answer
-                              </label>
-                            </div>
-                            <div class="form-check">
-                              <input class="form-check-input" type="radio" name="answers" id="answerB" value="b">
-                              <label class="form-check-label" for="answerB" id="answerB-text">
-                                Second answer
-                              </label>
-                            </div>
-                            <div class="form-check">
-                              <input class="form-check-input" type="radio" name="answers" id="answerC" value="c">
-                              <label class="form-check-label" for="answerC" id="answerC-text">
-                                Third answer
-                              </label>
-                            </div>
                           </div>
-                      </fieldset>
-                      <button type="submit">Next</button>
-                </form>
+                          <div id="answers-container">
+                          </div>
+                    </div>
 
                 <p id="correct-message" class="d-none">Awesome!</p>
                 <p id="wrong-message" class="d-none">Oops! Wrong answer!</p>

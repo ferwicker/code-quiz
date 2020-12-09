@@ -68,6 +68,7 @@ button {
 .answer-option {
     margin: 10px 0 10px 40px;
     cursor: pointer;
+    font-size: 24px;
 }
 
 .answer-option:hover {
@@ -201,5 +202,9 @@ button {
     
     #correct-message {
         font-size: 36px;
+    }
+
+    #question-form {
+        max-width: 800px;
     }
 }

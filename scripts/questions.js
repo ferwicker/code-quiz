@@ -5,23 +5,15 @@ var allQuestions = [
     {
       "number": 1,
       question: 'What does HTML stand for?',
-      answers: {
-      a: 'Hyper Text Markup Language',
-      b: 'Hyperlinks and Text Markup Language',
-      c: 'Home Tool Markup Language',
-    },
-      correctAnswer: 'a',
+      answers: ['Hyper Text Markup Language', 'Hyperlinks and Text Markup Language', 'Home Tool Markup Language'],
+      correctAnswer: 0,
     },
 
     {
         "number": 2,
         question: 'How do you insert a comment in a CSS file?',
-        answers: {
-        a: '// this is a comment //',
-        b: '/* this is a comment */',
-        c: '// this is a comment',
-      },
-        correctAnswer: 'b',
+        answers: ['// this is a comment //', '/* this is a comment */', '// this is a comment'],
+        correctAnswer: 1,
       },
 
       {
