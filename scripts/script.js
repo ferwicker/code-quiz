@@ -17,8 +17,6 @@ var quitButton = document.querySelector('#quit-button');
 var scoreTotalEl = document.querySelector('#score-total');
 var userName = document.querySelector('#name');
 
-
-
 // basic switching between screens
 function goToScreen1(){
     screen1.setAttribute('class', '');

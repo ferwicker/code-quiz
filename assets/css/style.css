@@ -204,7 +204,7 @@ button {
         font-size: 36px;
     }
 
-    #question-form {
+    .question-container {
         max-width: 800px;
     }
 }
