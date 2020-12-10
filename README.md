@@ -14,13 +14,15 @@ Time to test your knowledge! This online quiz game gives you 60 seconds to answe
 ## Process
 The creation process for this project was broken down into the following steps:
   <details><summary><b>Brainstorming and paper sketching of ideas</b></summary>
-As with every project, the first step is doing some brainstorming about possible approaches and putting some ideas down on paper as rough (very rough!) sketches.<br>
-This step is essential to create a roadmap for the rest of the project's development, and to get an idea of what the layout will look like.
+<p>As with every project, the first step is doing some brainstorming about possible approaches and putting some ideas down on paper as rough (very rough!) sketches.</p>
+<p>This step is essential to create a roadmap for the rest of the project's development, and to get an idea of what the layout will look like.</p>
 [images]
 </details>
 
   <details><summary><b>Design mockup on Adobe XD</b></summary>
-  As a designer,this is the most fun part! It is where I get to define what the final project will look like (although it is open to changes as becomes necessary). In this step I experiment with colours, images and layouts before ever writing a line of code, and save a ton of time!
+  <p>As a designer,this is the most fun part! It is where I get to define what the final project will look like (although it is open to changes as becomes necessary). In this step I experiment with colours, images and layouts before ever writing a line of code, and save a ton of time!</p>
+  <p>For this project, I used a mobile-first approach for the design to make the coding of the responsive app easier.</p>
+  </br>
   <img src='assets/readme-images/XD-design.jpg' alt='XD Mockup'>
   </details>
 
