@@ -9,7 +9,7 @@ Time to test your knowledge! This online quiz game gives you 60 seconds to answe
   - [Credits](#credits)
 
 ## Motivation
-
+The aim of this project is to build a fun adn easy to use quiz to gamify learning of HTML, CSS and Javascript. The High Scores function helps make this even more fun by allowing the user to compete with friends for the highest score! 
 
 ## Process
 The creation process for this project was broken down into the following steps:
@@ -29,10 +29,10 @@ The creation process for this project was broken down into the following steps:
   <p>With the design set up, the HTML and CSS building was pretty straight forward. The approach used was that of multiple sections (one for each 'screen') overlapping each other and toggling 'display: none' to switch between them. Most HMTL elements needed for the application were built in this step, although the approach for the 'Questions' section changed a couple times as we will see in the next step.</p>
   </details>
 
-<details><summary><b>Javascript development<b></summary>
+<details><summary><b>Javascript development</b></summary>
   The main challenge during this step was the questions displaying and being checked. Although the initial working application used a form with radio buttons and a 'Next' button, the final version uses dynamically modified HTML and event listeners on the answers themselved to check. This simplifies the user experience and allows for faster play.</details> 
   
-  <details><summary><b>Testing and adjusting<b></summary>
+  <details><summary><b>Testing and adjusting</b></summary>
   The application was tested and adjusted as needed throughout the process and after, both for functionality and mobile responsiveness.
   </details> 
   
