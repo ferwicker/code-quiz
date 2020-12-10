@@ -21,7 +21,7 @@ This step is essential to create a roadmap for the rest of the project's develop
 
   <details><summary><b>Design mockup on Adobe XD</b></summary>
   As a designer,this is the most fun part! It is where I get to define what the final project will look like (although it is open to changes as becomes necessary). In this step I experiment with colours, images and layouts before ever writing a line of code, and save a ton of time!
-  ![XD Mockup](assets/readme-images/XD-design.jpg)
+  <img src='assets/readme-images/XD-design.jpg' alt='XD Mockup'>
   </details>
 
 <details><summary>HTML and CSS development</summary>
