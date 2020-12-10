@@ -16,7 +16,6 @@ The creation process for this project was broken down into the following steps:
   <details><summary><b>Brainstorming and paper sketching of ideas</b></summary>
 <p>As with every project, the first step is doing some brainstorming about possible approaches and putting some ideas down on paper as rough (very rough!) sketches.</p>
 <p>This step is essential to create a roadmap for the rest of the project's development, and to get an idea of what the layout will look like.</p>
-[images]
 </details>
 
   <details><summary><b>Design mockup on Adobe XD</b></summary>
@@ -26,19 +25,20 @@ The creation process for this project was broken down into the following steps:
   <img src='assets/readme-images/XD-design.jpg' alt='XD Mockup'>
   </details>
 
-<details><summary>HTML and CSS development</summary>
-  content</details>
+<details><summary><b>HTML and CSS development</b></summary>
+  <p>With the design set up, the HTML and CSS building was pretty straight forward. The approach used was that of multiple sections (one for each 'screen') overlapping each other and toggling 'display: none' to switch between them. Most HMTL elements needed for the application were built in this step, although the approach for the 'Questions' section changed a couple times as we will see in the next step.</p>
+  </details>
 
-<details><summary>Javascript development</summary>
-  content</details> 
+<details><summary><b>Javascript development<b></summary>
+  The main challenge during this step was the questions displaying and being checked. Although the initial working application used a form with radio buttons and a 'Next' button, the final version uses dynamically modified HTML and event listeners on the answers themselved to check. This simplifies the user experience and allows for faster play.</details> 
   
-  <details><summary>Testing and adjusting</summary>
-  content</details> 
+  <details><summary><b>Testing and adjusting<b></summary>
+  The application was tested and adjusted as needed throughout the process and after, both for functionality and mobile responsiveness.
+  </details> 
   
 
 ## Features
-
-went through a form option with set answer elements, needed a submit button, then decided to change back to just text with event listeners.
+The quiz has a 60 second timer and score counter. When a user chooses the correct answer, the score goes up by one, when the answer is wrong, the time left decreases by 5 seconds. At the end of the quiz, the user inputs their name to save the score to local storage and the High Scores are displayed on the screen. The user can clear the scores or play again.
 
 ### [See deployed application](https://ferwicker.github.io/code-quiz/)
 
